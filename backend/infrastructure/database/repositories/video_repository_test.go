@@ -1,0 +1,47 @@
+package repositories_test
+
+// func TestVideoRepositoryMethods(t *testing.T) {
+// 	db, err := gorm.Open(sqlite.Open(":memory:"), &gorm.Config{})
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	encoderContext := contexts.NewEncoderContext(db)
+// 	encoderContext.RunMigrations()
+// 	videoRepo := repositories.NewVideoRepository(encoderContext)
+
+// 	var insertedVideoUUID string
+
+// 	t.Run("Insert_ValidVideoStruct_ShouldNotReturnError", func(t *testing.T) {
+// 		//Arrange
+// 		video := entities.NewVideo(uuid.NewV4().String(), "<file_path>")
+// 		insertedVideoUUID = video.GetId()
+// 		//Act
+// 		entity, err := videoRepo.Insert(video)
+// 		//Assert
+// 		require.NotNil(t, entity)
+// 		require.Nil(t, err)
+// 		require.Equal(t, video.ID, entity.GetId())
+// 		require.IsType(t, video, entity)
+// 	})
+
+// 	t.Run("Find_ValidInsertedVideoUUID_ShouldNotReturnError", func(t *testing.T) {
+// 		//Arrange
+// 		//Act
+// 		entity, err := videoRepo.Find(insertedVideoUUID)
+// 		//Assert
+// 		require.NotNil(t, entity)
+// 		require.Nil(t, err)
+// 		require.Equal(t, insertedVideoUUID, entity.GetId())
+// 	})
+
+// 	t.Run("Find_InvalidInsertedVideoUUID_ShouldReturnError", func(t *testing.T) {
+// 		//Arrange
+// 		invalidID := uuid.NewV4().String()
+// 		errMsg := fmt.Sprintf("video ID '%v' doest not exist", invalidID)
+// 		//Act
+// 		entity, err := videoRepo.Find(invalidID)
+// 		//Assert
+// 		require.Nil(t, entity)
+// 		require.EqualError(t, err, errMsg)
+// 	})
+// }

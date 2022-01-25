@@ -20,13 +20,23 @@ type Video struct {
 	Description   string `json:"description" valid:"required"`
 	CourseName    string `json:"courseName" valid:"required"`
 	Image         string `json:"image" valid:"url"`
-	Ordering      int    `json:"ordering" valid:"required"`
+	Ordering      string `json:"ordering" valid:"required"`
 	FilePath      string `json:"filePath" valid:"-"`
 }
 
-func NewVideo(rID, file string) *Video {
+func NewVideo(courseId, moduleId, clipId, moduleTitle, title, authorName, desc, courseName, image, ordering string) *Video {
 	return &Video{
-		Entity: *common.NewEntity(),
+		Entity:      *common.NewEntity(),
+		CourseId:    courseId,
+		ModuleId:    moduleId,
+		ClipId:      clipId,
+		ModuleTitle: moduleTitle,
+		Title:       title,
+		Author:      authorName,
+		Description: desc,
+		CourseName:  courseName,
+		Image:       image,
+		Ordering:    ordering,
 	}
 }
 
