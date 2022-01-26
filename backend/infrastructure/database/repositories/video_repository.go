@@ -31,7 +31,7 @@ func (r *VideoRepository) Insert(e interfaces.Entity) (interfaces.Entity, error)
 func (r *VideoRepository) Find(id string) (interfaces.Entity, error) {
 	var video entities.Video
 	db := r.dbContext.GetDBConnection()
-	db.Preload("Jobs").First(&video, "id=?", id)
+	db.First(&video, "id=?", id)
 
 	if video.IsValid() != nil {
 		return nil, fmt.Errorf("video ID '%v' doest not exist", id)
