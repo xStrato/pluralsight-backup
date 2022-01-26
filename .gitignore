@@ -1,7 +1,9 @@
 node_modules
-*.js
 .DS_Store
 package-lock.json
 *.map
 .nyc_output
 *.db
+*.html
+*.css
+*.js
