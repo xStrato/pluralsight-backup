@@ -6,6 +6,7 @@ import (
 	"github.com/xStrato/pluralsight-backup/backend/api"
 	"github.com/xStrato/pluralsight-backup/backend/api/controllers"
 	"github.com/xStrato/pluralsight-backup/backend/api/routes"
+	"github.com/xStrato/pluralsight-backup/backend/application/services"
 	"github.com/xStrato/pluralsight-backup/backend/infrastructure/database/contexts"
 	"github.com/xStrato/pluralsight-backup/backend/infrastructure/database/repositories"
 	"gorm.io/driver/sqlite"
@@ -21,7 +22,8 @@ func main() {
 	bkpDbContext.RunMigrations()
 
 	videoRepository := repositories.NewVideoRepository(bkpDbContext)
-	categoryController := controllers.NewCategoryController(videoRepository)
+	VideoService := services.NewVideoService(videoRepository)
+	categoryController := controllers.NewCategoryController(VideoService)
 	categoryRouter := routes.NewCategoryRouter(categoryController)
 
 	server := api.NewServer("3000")
