@@ -19,12 +19,14 @@ type Video struct {
 	Author        string `json:"authorName" valid:"required"`
 	Description   string `json:"description" valid:"required"`
 	CourseName    string `json:"courseName" valid:"required"`
+	Level         string `json:"level" valid:"required"`
 	Image         string `json:"image" valid:"url"`
 	Ordering      string `json:"ordering" valid:"required"`
-	FilePath      string `json:"filePath" valid:"-"`
+	Url           string `json:"url" valid:"url"`
+	StoragePath   string `json:"storagePath" valid:"-"`
 }
 
-func NewVideo(courseId, moduleId, clipId, moduleTitle, title, authorName, desc, courseName, image, ordering string) *Video {
+func NewVideoWithParams(courseId, moduleId, clipId, moduleTitle, title, authorName, desc, courseName, level, image, url, ordering string) *Video {
 	return &Video{
 		Entity:      *common.NewEntity(),
 		CourseId:    courseId,
@@ -35,9 +37,15 @@ func NewVideo(courseId, moduleId, clipId, moduleTitle, title, authorName, desc, 
 		Author:      authorName,
 		Description: desc,
 		CourseName:  courseName,
+		Level:       level,
 		Image:       image,
+		Url:         url,
 		Ordering:    ordering,
 	}
+}
+
+func NewVideo() *Video {
+	return &Video{Entity: *common.NewEntity()}
 }
 
 func (v *Video) GetId() string {

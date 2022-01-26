@@ -15,8 +15,8 @@ import (
 )
 
 func TestVideoRepositoryMethods(t *testing.T) {
-	db, err := gorm.Open(sqlite.Open("app_test.db"), &gorm.Config{})
-	// db, err := gorm.Open(sqlite.Open(":memory:"), &gorm.Config{})
+	// db, err := gorm.Open(sqlite.Open("app_test.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open(":memory:"), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,7 +28,7 @@ func TestVideoRepositoryMethods(t *testing.T) {
 
 	t.Run("Insert_ValidVideoStruct_ShouldNotReturnError", func(t *testing.T) {
 		//Arrange
-		video := entities.NewVideo(
+		video := entities.NewVideoWithParams(
 			uuid.NewV4().String(),
 			uuid.NewV4().String(),
 			uuid.NewV4().String(),
@@ -37,7 +37,9 @@ func TestVideoRepositoryMethods(t *testing.T) {
 			"Author",
 			"Description",
 			"CourseName",
+			"Level",
 			"Image",
+			"",
 			"1",
 		)
 		insertedVideoUUID = video.GetId()
